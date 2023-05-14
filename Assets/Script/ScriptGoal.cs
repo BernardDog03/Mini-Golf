@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScriptGoal : MonoBehaviour
 {
+    public UnityEvent OnBallGoalEnter = new UnityEvent();
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Goal");
+        if(other.CompareTag("Ball"))
+        {
+            OnBallGoalEnter.Invoke();
+        }
     }
 }
